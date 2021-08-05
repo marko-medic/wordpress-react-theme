@@ -3,12 +3,14 @@
 
 /*======= FFL easy main class ===== */
 
+
 class StoreFrontChild
 {
     public function __construct()
     {
         add_action('after_setup_theme', array($this, 'setup'));
         add_action("wp_enqueue_scripts", [$this, "scripts"]);
+        add_action("wp_print_styles", [$this, "disable_extra_styles"]);
         add_action("init", [$this, "add_rewrite_rules"]);
         $this->add_filters();
         $this->remove_actions();
@@ -21,14 +23,16 @@ class StoreFrontChild
         add_image_size("blog-list-thumbnail", 700, 400, true);
         add_image_size("blog-post-thumbnail", 850, 500, true);
         add_image_size("paginate-post-thumbnail", 90, 50, true);
-        register_sidebar([
+        register_sidebar(
+            [
             'name'          => 'Blog right sidebar',
             'id'            => 'blog_right_1',
             'before_widget' => '<div class="widget-item">',
             'after_widget'  => '</div>',
             'before_title'  => '<div class="widget-item__title-box"><h5 class="widget-item__heading" >',
             'after_title'   => '</h5></div>',
-        ]);
+            ]
+        );
     }
 
 
@@ -38,11 +42,19 @@ class StoreFrontChild
         // Load scripts
         wp_enqueue_style('open-sans-font', '//fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap');
         wp_enqueue_script('app-js', get_theme_file_uri('/assets/js/dist/app.js'), null, microtime(), true);
-        wp_localize_script("app-js", "php_data", [
+        ;
+        wp_localize_script(
+            "app-js", "php_data", [
             "root_url" => get_site_url(),
             "template_url" => get_stylesheet_directory_uri(),
             "nonce" => wp_create_nonce("wp_rest") // rest api auth
-        ]);
+            ]
+        );
+    }
+
+    public function disable_extra_styles()
+    {
+        wp_deregister_style('storefront-style');
     }
 
     public function add_filters()

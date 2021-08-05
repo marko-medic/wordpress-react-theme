@@ -1,6 +1,6 @@
 <footer class="main-footer p40">
     <p class="main-footer__text">
-        Copyright 2020
+        ...extra footer
     </p>
 </footer>
 

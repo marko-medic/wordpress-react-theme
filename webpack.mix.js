@@ -12,7 +12,7 @@ let mix = require("laravel-mix");
  */
 
 mix
-  .js("assets/js/app.ts", "assets/js/dist")
+  .react("assets/js/app.tsx", "assets/js/dist")
   .sass("assets/scss/app.scss", "style.css")
   .webpackConfig({
     module: {
@@ -27,6 +27,12 @@ mix
     resolve: {
       extensions: ["*", ".js", ".jsx", ".vue", ".ts", ".tsx"],
     },
+  })
+  .browserSync({
+    injectChanges: true,
+    open: false,
+    proxy: "playground.local",
+    files: ["assets/js/dist/*.js", "style.css", "**/*.+(html|php)"],
   });
 
 // Full API
@@ -40,7 +46,6 @@ mix
 // mix.less(src, output);
 // mix.stylus(src, output);
 // mix.postCss(src, output, [require('postcss-some-plugin')()]);
-// mix.browserSync('my-site.test');
 // mix.combine(files, destination);
 // mix.babel(files, destination); <-- Identical to mix.combine(), but also includes Babel compilation.
 // mix.copy(from, to);

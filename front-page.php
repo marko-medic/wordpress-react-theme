@@ -2,9 +2,7 @@
 get_header()
 ?>
 
-<div id="front-page">
-    <h1>Home page!</h1>
-
+<div id="root">
 </div>
 
 
