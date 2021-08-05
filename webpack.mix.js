@@ -12,8 +12,22 @@ let mix = require("laravel-mix");
  */
 
 mix
-  .js("assets/js/app.js", "assets/js/dist")
-  .sass("assets/scss/app.scss", "style.css");
+  .js("assets/js/app.ts", "assets/js/dist")
+  .sass("assets/scss/app.scss", "style.css")
+  .webpackConfig({
+    module: {
+      rules: [
+        {
+          test: /\.tsx?$/,
+          loader: "ts-loader",
+          exclude: /node_modules/,
+        },
+      ],
+    },
+    resolve: {
+      extensions: ["*", ".js", ".jsx", ".vue", ".ts", ".tsx"],
+    },
+  });
 
 // Full API
 // mix.js(src, output);

@@ -86,40 +86,66 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./assets/js/app.js":
+/***/ "./assets/js/app.ts":
 /*!**************************!*\
-  !*** ./assets/js/app.js ***!
+  !*** ./assets/js/app.ts ***!
   \**************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _modules_Person__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/Person */ "./assets/js/modules/Person.js");
 
-var p = new _modules_Person__WEBPACK_IMPORTED_MODULE_0__["Person"]("Marko", 25);
+Object.defineProperty(exports, "__esModule", { value: true });
+var Person_1 = __webpack_require__(/*! ./modules/Person */ "./assets/js/modules/Person.ts");
+__webpack_require__(/*! ./modules/About */ "./assets/js/modules/About.ts");
+var p = new Person_1.Person("Marko", 5);
 console.log(p);
+
 
 /***/ }),
 
-/***/ "./assets/js/modules/Person.js":
-/*!*************************************!*\
-  !*** ./assets/js/modules/Person.js ***!
-  \*************************************/
-/*! exports provided: Person */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ "./assets/js/modules/About.ts":
+/*!************************************!*\
+  !*** ./assets/js/modules/About.ts ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Person", function() { return Person; });
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var Person = function Person(name, age) {
-  _classCallCheck(this, Person);
+var aboutElem = document.querySelector("#about-page");
+if (aboutElem) {
+    var btn = aboutElem.querySelector("button");
+    var myFn = function (e) {
+        var elem = e.currentTarget;
+        console.log(elem);
+    };
+    btn.addEventListener("click", myFn);
+}
 
-  this.name = name;
-  this.age = age;
-};
+
+/***/ }),
+
+/***/ "./assets/js/modules/Person.ts":
+/*!*************************************!*\
+  !*** ./assets/js/modules/Person.ts ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Person = void 0;
+var Person = /** @class */ (function () {
+    function Person(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+    return Person;
+}());
+exports.Person = Person;
+
 
 /***/ }),
 
@@ -136,12 +162,12 @@ var Person = function Person(name, age) {
 
 /***/ 0:
 /*!*******************************************************!*\
-  !*** multi ./assets/js/app.js ./assets/scss/app.scss ***!
+  !*** multi ./assets/js/app.ts ./assets/scss/app.scss ***!
   \*******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Local Sites\playground\app\public\wp-content\themes\storefront-child\assets\js\app.js */"./assets/js/app.js");
+__webpack_require__(/*! D:\Local Sites\playground\app\public\wp-content\themes\storefront-child\assets\js\app.ts */"./assets/js/app.ts");
 module.exports = __webpack_require__(/*! D:\Local Sites\playground\app\public\wp-content\themes\storefront-child\assets\scss\app.scss */"./assets/scss/app.scss");
 
 
